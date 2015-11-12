@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="TodoApp">
+
+  <head>
+<meta name="description" content="AngularJS - ToDo List">
+<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+<script src="ngjs.js"></script>
+
+    <meta charset="utf-8">
+    
+    <title>AngularJS - ToDo List</title>
+    
+  </head>
+  
+  <body ng-controller="TodoCtrl">
+    
+    <h1>{{ name }}'s Todo List {{ today | date : 'shortDate' }}</h1>
+  
+    <h3>{{ (todos | filter: {complete:true}).length }} of {{ todos.length }} todos completed!</h3>
+    
+    <div>
+      <form ng-submit="onSubmit(todo)">
+        <input type="text" ng-model="todo.title">
+        <input type="submit" value="Add">
+      </form>
+      </br>
+      
+      <table>
+        <tr ng-class="{complete: todo.complete}" ng-repeat="todo in todos">
+          <td><input type="checkbox" ng-model="todo.complete" ng-checked="todo.complete"></td>
+          <td>{{ todo.title }}</td>
+        </tr>        
+      </table>
+    
+    </div>
+  
+  </body>
+</html> 
